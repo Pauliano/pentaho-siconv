@@ -1,0 +1,305 @@
+drop table if exists SICONV_CONSORCIOS;
+
+	ID_PROPOSTA int
+	,CNPJ_CONSORCIO int8
+	,NOME_CONSORCIO varchar
+	,CODIGO_CNAE_PRIMARIO varchar
+	,DESC_CNAE_PRIMARIO varchar
+	,CODIGO_CNAE_SECUNDARIO varchar
+	,DESC_CNAE_SECUNDARIO varchar
+	,CNPJ_PARTICIPANTE int8
+	,NOME_PARTICIPANTE varchar)
+;
+
+drop table if exists SICONV_CONVENIO;
+create table SICONV_CONVENIO (
+	NR_CONVENIO int
+	,ID_PROPOSTA int
+	,DIA varchar
+	,MES varchar
+	,ANO varchar
+	,DIA_ASSIN_CONV date
+	,SIT_CONVENIO varchar
+	,SUBSITUACAO_CONV varchar
+	,SITUACAO_PUBLICACAO varchar
+	,INSTRUMENTO_ATIVO varchar
+	,IND_OPERA_OBTV varchar
+	,NR_PROCESSO varchar
+	,UG_EMITENTE varchar
+	,DIA_PUBL_CONV int
+	,DIA_INIC_VIGENC_CONV int
+	,DIA_FIM_VIGENC_CONV int
+	,DIAS_PREST_CONTAS int
+	,DIA_LIMITE_PREST_CONTAS int
+	,SITUACAO_CONTRATACAO varchar
+	,IND_ASSINADO varchar
+	,QTDE_CONVENIOS varchar
+	,QTD_TA int
+	,QTD_PRORROGA int
+	,VL_GLOBAL_CONV float
+	,VL_REPASSE_CONV float
+	,VL_CONTRAPARTIDA_CONV float
+	,VL_EMPENHADO_CONV float
+	,VL_DESEMBOLSADO_CONV float
+	,VL_SALDO_REMAN_TESOURO float
+	,VL_SALDO_REMAN_CONVENENTE float
+	,VL_RENDIMENTO_APLICACAO float
+	,VL_INGRESSO_CONTRAPARTIDA float
+	,VL_SALDO_CONTA float
+	,MOTIVO_SUSPENSAO varchar
+	,IND_FOTO VARCHAR)
+;
+
+drop table if exists SICONV_DESBLOQUEIO_CR;
+create table SICONV_DESBLOQUEIO_CR (
+	NR_CONVENIO int
+	,NR_OB int
+	,DATA_CADASTRO date
+	,DATA_ENVIO date
+	,TIPO_RECURSO_DESBLOQUEIO varchar
+	,VL_TOTAL_DESBLOQUEIO float
+	,VL_DESBLOQUEADO float
+	,VL_BLOQUEADO float)
+;
+
+drop table if exists SICONV_DESEMBOLSO;
+create table SICONV_DESEMBOLSO (
+	ID_DESEMBOLSO int
+	,NR_CONVENIO int
+	,DT_ULT_DESEMBOLSO varchar
+	,QTD_DIAS_SEM_DESEMBOLSO int
+	,DATA_DESEMBOLSO date
+	,ANO_DESEMBOLSO varchar
+	,MES_DESEMBOLSO int
+	,NR_SIAFI int
+	,VL_DESEMBOLSADO float)
+;
+
+drop table if exists SICONV_EMENDA;
+create table SICONV_EMENDA (
+	ID_PROPOSTA int
+	,QUALIF_PROPONENTE varchar
+	,COD_PROGRAMA_EMENDA varchar
+	,NR_EMENDA int
+	,NOME_PARLAMENTAR varchar
+	,BENEFICIARIO_EMENDA varchar
+	,IND_IMPOSITIVO varchar
+	,TIPO_PARLAMENTAR varchar
+	,VALOR_REPASSE_PROPOSTA_EMENDA varchar
+	,VALOR_REPASSE_EMENDA varchar)
+;
+
+drop table if exists SICONV_EMPENHO;
+create table SICONV_EMPENHO (
+	ID_EMPENHO int
+	,NR_CONVENIO int
+	,NR_EMPENHO int
+	,TIPO_NOTA varchar
+	,DESC_TIPO_NOTA varchar
+	,DATA_EMISSAO date
+	,COD_SITUACAO_EMPENHO varchar
+	,DESC_SITUACAO_EMPENHO varchar
+	,VALOR_EMPENHO varchar)
+;
+
+drop table if exists SICONV_EMPENHO_DESEMBOLSO;
+create table SICONV_EMPENHO_DESEMBOLSO (
+	ID_DESEMBOLSO int
+	,ID_EMPENHO int
+	,VALOR_GRUPO varchar)
+;
+
+drop table if exists SICONV_ETAPA_CRONO_FISICO;
+create table SICONV_ETAPA_CRONO_FISICO (
+	ID_META int
+	,ID_ETAPA int
+	,NR_ETAPA int
+	,DESC_ETAPA varchar
+	,DATA_INICIO_ETAPA date
+	,DATA_FIM_ETAPA date
+	,UF_ETAPA varchar
+	,MUNICIPIO_ETAPA varchar
+	,ENDERECO_ETAPA varchar
+	,CEP_ETAPA varchar
+	,QTD_ETAPA int
+	,UND_FORNECIMENTO_ETAPA varchar
+	,VL_ETAPA float)
+;
+
+drop table if exists SICONV_HISTORICO_SITUACAO;
+create table SICONV_HISTORICO_SITUACAO (
+	ID_PROPOSTA int
+	,NR_CONVENIO int
+	,DIA_HISTORICO_SIT int
+	,HISTORICO_SIT varchar
+	,DIAS_HISTORICO_SIT int
+	,COD_HISTORICO_SIT varchar)
+;
+
+drop table if exists SICONV_INGRESSO_CONTRAPARTIDA;
+create table SICONV_INGRESSO_CONTRAPARTIDA (
+	NR_CONVENIO int
+	,DT_INGRESSO_CONTRAPARTIDA varchar
+	,VL_INGRESSO_CONTRAPARTIDA float)
+;
+
+drop table if exists SICONV_META_CRONO_FISICO;
+create table SICONV_META_CRONO_FISICO (
+	ID_META int
+	,NR_CONVENIO int
+	,COD_PROGRAMA varchar
+	,NOME_PROGRAMA varchar
+	,NR_META int
+	,TIPO_META varchar
+	,DESC_META varchar
+	,DATA_INICIO_META date
+	,DATA_FIM_META date
+	,UF_META varchar
+	,MUNICIPIO_META varchar
+	,ENDERECO_META varchar
+	,CEP_META varchar
+	,QTD_META int
+	,UND_FORNECIMENTO_META varchar
+	,VL_META float)
+;
+
+drop table if exists SICONV_OBTV_CONVENENTE;
+create table SICONV_OBTV_CONVENENTE (
+	NR_MOV_FIN int
+	,IDENTIF_FAVORECIDO_OBTV_CONV varchar
+	,NM_FAVORECIDO_OBTV_CONV varchar
+	,TP_AQUISICAO varchar
+	,VL_PAGO_OBTV_CONV float)
+;
+
+drop table if exists SICONV_PAGAMENTO;
+create table SICONV_PAGAMENTO (
+	NR_MOV_FIN int
+	,NR_CONVENIO int
+	,IDENTIF_FORNECEDOR varchar
+	,NOME_FORNECEDOR varchar
+	,TP_MOV_FINANCEIRA varchar
+	,DATA_PAG date
+	,NR_DL int
+	,DESC_DL varchar
+	,VL_PAGO float)
+;
+
+drop table if exists SICONV_PLANO_APLICACAO_DETALHADO;
+create table SICONV_PLANO_APLICACAO_DETALHADO (
+	ID_PROPOSTA int
+	,SIGLA varchar
+	,MUNICIPIO varchar
+	,NATUREZA_AQUISICAO varchar
+	,DESCRICAO_ITEM varchar
+	,CEP_ITEM varchar
+	,ENDERECO_ITEM varchar
+	,TIPO_DESPESA_ITEM varchar
+	,NATUREZA_DESPESA varchar
+	,SIT_ITEM varchar
+	,QTD_ITEM int
+	,VALOR_UNITARIO_ITEM varchar
+	,VALOR_TOTAL_ITEM varchar)
+;
+
+drop table if exists SICONV_PROGRAMA;
+create table SICONV_PROGRAMA (
+	ID_PROGRAMA int
+	,COD_ORGAO_SUP_PROGRAMA varchar
+	,DESC_ORGAO_SUP_PROGRAMA varchar
+	,COD_PROGRAMA varchar
+	,NOME_PROGRAMA varchar
+	,SIT_PROGRAMA varchar
+	,DATA_DISPONIBILIZACAO date
+	,ANO_DISPONIBILIZACAO varchar
+	,DT_PROG_INI_RECEB_PROP varchar
+	,DT_PROG_FIM_RECEB_PROP varchar
+	,DT_PROG_INI_EMENDA_PAR varchar
+	,DT_PROG_FIM_EMENDA_PAR varchar
+	,DT_PROG_INI_BENEF_ESP varchar
+	,DT_PROG_FIM_BENEF_ESP varchar
+	,MODALIDADE_PROGRAMA varchar
+	,NATUREZA_JURIDICA_PROGRAMA varchar
+	,UF_PROGRAMA varchar
+	,ACAO_ORCAMENTARIA varchar)
+;
+
+drop table if exists SICONV_PROGRAMA_PROPOSTA;
+create table SICONV_PROGRAMA_PROPOSTA (
+	ID_PROGRAMA int
+	,ID_PROPOSTA int)
+;
+
+drop table if exists SICONV_PROPONENTES;
+create table SICONV_PROPONENTES (
+	IDENTIF_PROPONENTE varchar
+	,NM_PROPONENTE varchar
+	,MUNICIPIO_PROPONENTE varchar
+	,UF_PROPONENTE varchar
+	,ENDERECO_PROPONENTE varchar
+	,BAIRRO_PROPONENTE varchar
+	,CEP_PROPONENTE varchar
+	,EMAIL_PROPONENTE varchar
+	,TELEFONE_PROPONENTE varchar
+	,FAX_PROPONENTE varchar)
+;
+
+drop table if exists SICONV_PROPOSTA;
+create table SICONV_PROPOSTA (
+	ID_PROPOSTA int
+	,UF_PROPONENTE varchar
+	,MUNIC_PROPONENTE varchar
+	,COD_MUNIC_IBGE varchar
+	,COD_ORGAO_SUP varchar
+	,DESC_ORGAO_SUP varchar
+	,NATUREZA_JURIDICA varchar
+	,NR_PROPOSTA int
+	,DIA_PROP int
+	,MES_PROP int
+	,ANO_PROP varchar
+	,DIA_PROPOSTA int
+	,COD_ORGAO varchar
+	,DESC_ORGAO varchar
+	,MODALIDADE varchar
+	,IDENTIF_PROPONENTE varchar
+	,NM_PROPONENTE varchar
+	,CEP_PROPONENTE varchar
+	,ENDERECO_PROPONENTE varchar
+	,BAIRRO_PROPONENTE varchar
+	,NM_BANCO varchar
+	,SITUACAO_CONTA varchar
+	,SITUACAO_PROJETO_BASICO varchar
+	,SIT_PROPOSTA varchar
+	,DIA_INIC_VIGENCIA_PROPOSTA int
+	,DIA_FIM_VIGENCIA_PROPOSTA int
+	,OBJETO_PROPOSTA varchar
+	,VL_GLOBAL_PROP float
+	,VL_REPASSE_PROP float
+	,VL_CONTRAPARTIDA_PROP float)
+;
+
+drop table if exists SICONV_PRORROGA_OFICIO;
+create table SICONV_PRORROGA_OFICIO (
+	NR_CONVENIO int
+	,NR_PRORROGA int
+	,DT_INICIO_PRORROGA varchar
+	,DT_FIM_PRORROGA varchar
+	,DIAS_PRORROGA int
+	,DT_ASSINATURA_PRORROGA varchar
+	,SIT_PRORROGA varchar)
+;
+
+drop table if exists SICONV_TERMO_ADITIVO;
+create table SICONV_TERMO_ADITIVO (
+	NR_CONVENIO int
+	,NUMERO_TA varchar
+	,TIPO_TA varchar
+	,VL_GLOBAL_TA float
+	,VL_REPASSE_TA float
+	,VL_CONTRAPARTIDA_TA float
+	,DT_ASSINATURA_TA varchar
+	,DT_INICIO_TA varchar
+	,DT_FIM_TA varchar
+	,JUSTIFICATIVA_TA varchar)
+;
+

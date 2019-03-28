@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="my_test_about_db_portal" schema="public" type="PostgreSQL - 9.6.0">
+   <tables>
+      <table name="consorcios" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="ID_PROPOSTA" nullable="true" remarks="Código Sequencial do Sistema para uma Proposta" size="2147483647" type="varchar">
+            <parent column="ID_PROPOSTA" foreignKey="proposta_fk" implied="false" onDeleteCascade="false" table="proposta"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="CNPJ_CONSORCIO" nullable="true" remarks="CNPJ do Consórcio" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="NOME_CONSORCIO" nullable="true" remarks="Razão Social do Consórcio" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="CODIGO_CNAE_PRIMARIO" nullable="true" remarks="Código do CNAE Primário na Receita Federal" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="DESC_CNAE_PRIMARIO" nullable="true" remarks="Descrição do CNAE Primário na Receita Federal" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="CODIGO_CNAE_SECUNDARIO" nullable="true" remarks="Código do CNAE Secundário na Receita Federal" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="DESC_CNAE_SECUNDARIO" nullable="true" remarks="Descrição do CNAE Secundário na Receita Federal" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="CNPJ_PARTICIPANTE" nullable="true" remarks="CNPJ dos Participantes do Consórcio" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="NOME_PARTICIPANTE" nullable="true" remarks="Descrição do nome dos participantes do Consórcio" size="2147483647" type="varchar"/>
+      </table>
+      <table name="convenio" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="NR_CONVENIO" nullable="false" remarks="Número gerado pelo Siconv. Possui faixa de numeração reservada que vai de 700000 a 999999" size="2147483647" type="varchar">
+            <child column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="desbloqueio_recurso_cr"/>
+            <child column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="desembolso"/>
+            <child column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="empenho"/>
+            <child column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="historico_situacao"/>
+            <child column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="ingresso_contrapartida"/>
+            <child column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="meta_crono_fisico"/>
+            <child column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="pagamento"/>
+            <child column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="prorroga_oficio"/>
+            <child column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="termo_aditivo"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="ID_PROPOSTA" nullable="true" remarks="Código Sequencial do Sistema para uma Proposta" size="2147483647" type="varchar">
+            <parent column="ID_PROPOSTA" foreignKey="proposta_fk" implied="false" onDeleteCascade="false" table="proposta"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="DIA" nullable="true" remarks="Dia em que o Convênio foi assinado" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="MES" nullable="true" remarks="Mês em que o Convênio foi assinado" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="ANO" nullable="true" remarks="Ano Assinatura do Convênio" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="DIA_ASSIN_CONV" nullable="true" remarks="Data Assinatura do Convênio" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="SIT_CONVENIO" nullable="true" remarks="Situação atual do Convênio. Domínio: Em execução, Convênio Anulado, Prestação de Contas enviada para Análise, Prestação de Contas Aprovada, Prestação de Contas em Análise, Prestação de Contas em Complementação, Inadimplente, etc" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="SUBSITUACAO_CONV" nullable="true" remarks="Sub-Situação atual do Convênio. Domínio: Convênio, Convênio Cancelado, Convênio Encerrado, Proposta, Em aditivação" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="SITUACAO_PUBLICACAO" nullable="true" remarks="Situação atual da Publicação do instrumento. Domínio: Publicado e Transferido para IN" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="9" name="INSTRUMENTO_ATIVO" nullable="true" remarks="Convênios que ainda não foram finalizados. Domínio: SIM, NÃO" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="10" name="IND_OPERA_OBTV" nullable="true" remarks="Indicativo de que o Convênio opera com OBTV. Domínio: SIM, NÃO" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="11" name="NR_PROCESSO" nullable="true" remarks="Número interno do processo físico do instrumento" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="12" name="UG_EMITENTE" nullable="true" remarks="Número da Unidade Gestora" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="13" name="DIA_PUBL_CONV" nullable="true" remarks="Data da Publicação do Convênio" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="14" name="DIA_INIC_VIGENC_CONV" nullable="true" remarks="Data de Início de Vigência do Convênio" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="15" name="DIA_FIM_VIGENC_CONV" nullable="true" remarks="Data de Fim de Vigência do Convênio" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="16" name="DIAS_PREST_CONTAS" nullable="true" remarks="Pazo para a Prestação de Contas do Convênio" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="17" name="DIA_LIMITE_PREST_CONTAS" nullable="true" remarks="Data limite para Prestação de Contas do Convênio" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="18" name="SITUACAO_CONTRATACAO" nullable="true" remarks="Situação atual da Contratação. Domínio: Cláusula Suspensiva, Liminar Judicial, Normal e Sob Liminar Judicial e Cláusula Suspensiva" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="19" name="IND_ASSINADO" nullable="true" remarks="Indicativo se o Convênio está assinado ou não. Domínio: SIM, NÃO" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="20" name="QTDE_CONVENIOS" nullable="true" remarks="Quantidade de Instrumentos Assinados" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="21" name="QTD_TA" nullable="true" remarks="Quantidade de Termos Aditivos" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="22" name="QTD_PRORROGA" nullable="true" remarks="Quantidade de Prorrogas de Ofício" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="23" name="VL_GLOBAL_CONV" nullable="true" remarks="Valor global dos Instrumentos assinados (Valor de Repasse + Valor Contrapartida)" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="24" name="VL_REPASSE_CONV" nullable="true" remarks="Valor total do aporte do Governo Federal referente a celebração do Instrumento" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="25" name="VL_CONTRAPARTIDA_CONV" nullable="true" remarks="Valor total da Contrapartida que será disponibilizada pelo convenente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="26" name="VL_EMPENHADO_CONV" nullable="true" remarks="Valor total empenhado do Governo Federal para os Instrumentos" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="27" name="VL_DESEMBOLSADO_CONV" nullable="true" remarks="Valor total desembolsado do Governo Federal para a conta do Instrumento" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="28" name="VL_SALDO_REMAN_TESOURO" nullable="true" remarks="Valores devolvidos ao Tesouro ao término do instrumento" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="29" name="VL_SALDO_REMAN_CONVENENTE" nullable="true" remarks="Valores devolvidos ao Convenente ao término do instrumento" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="30" name="VL_RENDIMENTO_APLICACAO" nullable="true" remarks="Valores referentes aos redimentos de aplicação financeira" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="31" name="VL_INGRESSO_CONTRAPARTIDA" nullable="true" remarks="Total de valores referente a ingresso de contrapartida dos Instrumentos" size="2147483647" type="varchar"/>
+         <primaryKey column="NR_CONVENIO" sequenceNumberInPK="1"/>
+         <index name="convenio_pk" unique="true">
+            <column ascending="true" name="NR_CONVENIO"/>
+         </index>
+      </table>
+      <table name="desbloqueio_recurso_cr" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="NR_CONVENIO" nullable="true" remarks="Número gerado pelo Siconv. Possui faixa de numeração reservada que vai de 700000 a 999999" size="2147483647" type="varchar">
+            <parent column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="convenio"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="VL_TOTAL_DESBLOQUEIO" nullable="true" remarks="Valor total das ordens bancárias (Valores Desembolsados)" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="VL_DESBLOQUEADO" nullable="true" remarks="Valor total desbloqueado para o Contrato de Repasse" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="VL_A_DESBLOQUEAR" nullable="true" remarks="Valores bloqueados para o Contrato de Repasse" size="2147483647" type="varchar"/>
+      </table>
+      <table name="desembolso" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="ID_DESEMBOLSO" nullable="false" remarks="Identificador único gerado pelo Sistema para o Desembolso" size="2147483647" type="varchar">
+            <child column="ID_DESEMBOLSO" foreignKey="desembolso_fk" implied="false" onDeleteCascade="false" table="empenho_desembolso"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="NR_CONVENIO" nullable="true" remarks="Número gerado pelo Siconv. Possui faixa de numeração reservada que vai de 700000 a 999999" size="2147483647" type="varchar">
+            <parent column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="convenio"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="DT_ULT_DESEMBOLSO" nullable="true" remarks="Data da última Ordem Bancária gerada" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="QTD_DIAS_SEM_DESEMBOLSO" nullable="true" remarks="Indicador de dias sem desembolso. Domínio: 90,180 e 365 dias" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="DATA_DESEMBOLSO" nullable="true" remarks="Data da Ordem Bancária" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="ANO_DESEMBOLSO" nullable="true" remarks="Ano da Ordem Bancária" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="MES_DESEMBOLSO" nullable="true" remarks="Mês da Ordem Bancária" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="NR_SIAFI" nullable="true" remarks="Número do Documento no SIAFI" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="VL_DESEMBOLSADO" nullable="true" remarks="Valor disponibilizado pelo Governo Federal para a conta do instrumento" size="2147483647" type="varchar"/>
+         <primaryKey column="ID_DESEMBOLSO" sequenceNumberInPK="1"/>
+         <index name="desembolso_pk" unique="true">
+            <column ascending="true" name="ID_DESEMBOLSO"/>
+         </index>
+      </table>
+      <table name="emenda" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="ID_PROPOSTA" nullable="true" remarks="Código Sequencial do Sistema para uma Proposta" size="2147483647" type="varchar">
+            <parent column="ID_PROPOSTA" foreignKey="proposta_fk" implied="false" onDeleteCascade="false" table="proposta"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="QUALIF_PROPONENTE" nullable="true" remarks="Qualificação do proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="COD_PROGRAMA_EMENDA" nullable="true" remarks="Chave que identifica o programa composta por: (Cód.Órgão+Ano+Cód.Sequencial do Sistema)" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="NR_EMENDA" nullable="true" remarks="Número da Emenda Parlamentar" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="NOME_PARLAMENTAR" nullable="true" remarks="Nome do Parlamentar" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="BENEFICIARIO_EMENDA" nullable="true" remarks="CNPJ do Proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="IND_IMPOSITIVO" nullable="true" remarks="Indicativo de Orçamento Impositivo (Tipo Parlamentar igual a INDIVIDUAL + Ano de Cadastro da Proposta &gt;= 2014). Domínio: SIM, NÃO" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="TIPO_PARLAMENTAR" nullable="true" remarks="Tipo do Parlamentar. Domínio pode ser: INDIVIDUAL, COMISSAO, BANCADA" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="VALOR_REPASSE_PROPOSTA_EMENDA" nullable="true" remarks="Valor da Emenda cadastrada na proposta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="9" name="VALOR_REPASSE_EMENDA" nullable="true" remarks="Valor da Emenda assinada" size="2147483647" type="varchar"/>
+      </table>
+      <table name="empenho" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="ID_EMPENHO" nullable="false" remarks="Identificador único gerado pelo Sistema para o Empenho" size="2147483647" type="varchar">
+            <child column="ID_EMPENHO" foreignKey="empenho_fk" implied="false" onDeleteCascade="false" table="empenho_desembolso"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="NR_CONVENIO" nullable="true" remarks="Número gerado pelo Siconv. Possui faixa de numeração reservada que vai de 700000 a 999999" size="2147483647" type="varchar">
+            <parent column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="convenio"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="NR_EMPENHO" nullable="true" remarks="Número da Nota de Empenho" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="TIPO_NOTA" nullable="true" remarks="Código do Tipo de Empenho" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="DESC_TIPO_NOTA" nullable="true" remarks="Descrição do Tipo de Empenho. Domínio: Empenho Original, Empenho de Despesa Pré-Empenhada, Anulação de Empenho, Reforço de Empenho, Estorno de Anulação de Empenho, etc" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="DATA_EMISSAO" nullable="true" remarks="Data de emissão do Empenho" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="COD_SITUACAO_EMPENHO" nullable="true" remarks="Código da Situação atual do empenho" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="DESC_SITUACAO_EMPENHO" nullable="true" remarks="Descrição da Situação atual do empenho. Domínio: Registrado no SIAFI e Enviado" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="VALOR_EMPENHO" nullable="true" remarks="Valor empenhado" size="2147483647" type="varchar"/>
+         <primaryKey column="ID_EMPENHO" sequenceNumberInPK="1"/>
+         <index name="empenho_pk" unique="true">
+            <column ascending="true" name="ID_EMPENHO"/>
+         </index>
+      </table>
+      <table name="empenho_desembolso" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="ID_DESEMBOLSO" nullable="true" remarks="Identificador único gerado pelo Sistema para o Desembolso" size="2147483647" type="varchar">
+            <parent column="ID_DESEMBOLSO" foreignKey="desembolso_fk" implied="false" onDeleteCascade="false" table="desembolso"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="ID_EMPENHO" nullable="true" remarks="Identificador único gerado pelo Sistema para o Empenho" size="2147483647" type="varchar">
+            <parent column="ID_EMPENHO" foreignKey="empenho_fk" implied="false" onDeleteCascade="false" table="empenho"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="VALOR_GRUPO" nullable="true" remarks="Valor presente nos dados orçamentários da OB" size="2147483647" type="varchar"/>
+      </table>
+      <table name="etapa_crono_fisico" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="ID_META" nullable="true" remarks="Código Sequencial do Sistema para uma Meta" size="2147483647" type="varchar">
+            <parent column="ID_META" foreignKey="etapa_crono_fisico_ID_META_fkey" implied="false" onDeleteCascade="false" table="meta_crono_fisico"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="ID_ETAPA" nullable="true" remarks="Código Sequencial do Sistema para uma Etapa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="NR_ETAPA" nullable="true" remarks="Número da Etapa gerada pelo Sistema" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="DESC_ETAPA" nullable="true" remarks="Especificação da etapa vinculada a meta do cronograma físico" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="DATA_INICIO_ETAPA" nullable="true" remarks="Data de início prevista para execução da etapa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="DATA_FIM_ETAPA" nullable="true" remarks="Data fim prevista para execução da etapa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="UF_ETAPA" nullable="true" remarks="UF cadastrada para a Etapa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="MUNICIPIO_ETAPA" nullable="true" remarks="Município cadastrado para a Etapa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="ENDERECO_ETAPA" nullable="true" remarks="Endereço cadastrado para a Etapa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="9" name="CEP_ETAPA" nullable="true" remarks="CEP cadastrado para a Etapa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="10" name="QTD_ETAPA" nullable="true" remarks="Quantidade da etapa vinculada a meta do cronograma físico." size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="11" name="UND_FORNECIMENTO_ETAPA" nullable="true" remarks="Unidade de fornecimento vinculada a etapa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="12" name="VL_ETAPA" nullable="true" remarks="Valor total da etapa vinculada a meta do cronograma físico" size="2147483647" type="varchar"/>
+      </table>
+      <table name="historico_situacao" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="ID_PROPOSTA" nullable="true" remarks="Código Sequencial do Sistema para uma Proposta" size="2147483647" type="varchar">
+            <parent column="ID_PROPOSTA" foreignKey="proposta_fk" implied="false" onDeleteCascade="false" table="proposta"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="NR_CONVENIO" nullable="true" remarks="Número gerado pelo Siconv. Possui faixa de numeração reservada que vai de 700000 a 999999" size="2147483647" type="varchar">
+            <parent column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="convenio"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="DIA_HISTORICO_SIT" nullable="true" remarks="Data de entrada da situação no sistema" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="HISTORICO_SIT" nullable="true" remarks="Situação histórica da Proposta/Convênio" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="DIAS_HISTORICO_SIT" nullable="true" remarks="Dias em que a Proposta/Convênio permaneceu na situação" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="COD_HISTORICO_SIT" nullable="true" remarks="Código da situação histórica da Proposta/Convênio, contendo a ordem cronológica do ciclo de vida de um convênio" size="2147483647" type="varchar"/>
+      </table>
+      <table name="ingresso_contrapartida" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="NR_CONVENIO" nullable="true" remarks="Número gerado pelo Siconv. Possui faixa de numeração reservada que vai de 700000 a 999999" size="2147483647" type="varchar">
+            <parent column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="convenio"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="DT_INGRESSO_CONTRAPARTIDA" nullable="true" remarks="Data da disponibilização do recurso por parte do Convenente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="VL_INGRESSO_CONTRAPARTIDA" nullable="true" remarks="Valor disponibilizado pelo Convenente para a conta do instrumento" size="2147483647" type="varchar"/>
+      </table>
+      <table name="meta_crono_fisico" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="ID_META" nullable="false" remarks="Código Sequencial do Sistema para uma Meta" size="2147483647" type="varchar">
+            <child column="ID_META" foreignKey="etapa_crono_fisico_ID_META_fkey" implied="false" onDeleteCascade="false" table="etapa_crono_fisico"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="NR_CONVENIO" nullable="true" remarks="Número gerado pelo Siconv. Possui faixa de numeração reservada que vai de 700000 a 999999" size="2147483647" type="varchar">
+            <parent column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="convenio"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="COD_PROGRAMA" nullable="true" remarks="Chave que identifica o programa composta por: (Cód.Órgão+Ano+Cód.Sequencial do Sistema)" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="NOME_PROGRAMA" nullable="true" remarks="Descrição do Programa de Governo" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="NR_META" nullable="true" remarks="Número da Meta gerada pelo Sistema" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="TIPO_META" nullable="true" remarks="Tipo da Meta: NORMAL/APLICAÇÃO" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="DESC_META" nullable="true" remarks="Especificação da Meta do Cronograma Físico" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="DATA_INICIO_META" nullable="true" remarks="Data de início da Meta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="DATA_FIM_META" nullable="true" remarks="Data de término da Meta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="9" name="UF_META" nullable="true" remarks="UF cadastrada para a Meta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="10" name="MUNICIPIO_META" nullable="true" remarks="Município cadastrado para a Meta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="11" name="ENDERECO_META" nullable="true" remarks="Endereço cadastrado para a Meta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="12" name="CEP_META" nullable="true" remarks="CEP cadastrado para a Meta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="13" name="QTD_META" nullable="true" remarks="Quantidade da Meta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="14" name="UND_FORNECIMENTO_META" nullable="true" remarks="Unidade de Fornecimento da Meta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="15" name="VL_META" nullable="true" remarks="Valor da Meta" size="2147483647" type="varchar"/>
+         <primaryKey column="ID_META" sequenceNumberInPK="1"/>
+         <index name="meta_crono_fisico_pk" unique="true">
+            <column ascending="true" name="ID_META"/>
+         </index>
+      </table>
+      <table name="obtv_convenente" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="NR_MOV_FIN" nullable="true" remarks="Número identificador da movimentação financeira" size="2147483647" type="varchar">
+            <parent column="NR_MOV_FIN" foreignKey="pagamento_fk" implied="false" onDeleteCascade="false" table="pagamento"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="IDENTIF_FAVORECIDO_OBTV_CONV" nullable="true" remarks="CNPJ/CPF do Favorecido recebedor do pagamento" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="NM_FAVORECIDO_OBTV_CONV" nullable="true" remarks="Nome do Favorecido recebedor do pagamento" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="TP_AQUISICAO" nullable="true" remarks="Tipo de Aquisição" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="VL_PAGO_OBTV_CONV" nullable="true" remarks="Valor pago ao favorecido" size="2147483647" type="varchar"/>
+      </table>
+      <table name="pagamento" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="NR_MOV_FIN" nullable="false" remarks="Número identificador da movimentação financeira" size="2147483647" type="varchar">
+            <child column="NR_MOV_FIN" foreignKey="pagamento_fk" implied="false" onDeleteCascade="false" table="obtv_convenente"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="NR_CONVENIO" nullable="true" remarks="Número gerado pelo Siconv. Possui faixa de numeração reservada que vai de 700000 a 999999" size="2147483647" type="varchar">
+            <parent column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="convenio"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="IDENTIF_FORNECEDOR" nullable="true" remarks="CNPJ/CPF do Fornecedor" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="NOME_FORNECEDOR" nullable="true" remarks="Nome do Fornecedor" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="TP_MOV_FINANCEIRA" nullable="true" remarks="Tipo da movimentação financeira realizada. Domínio: Pagamento a favorecido, Pagamento a favorecido com OBTV" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="DATA_PAG" nullable="true" remarks="Data da realização do pagamento" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="NR_DL" nullable="true" remarks="Número identificador do Documento de Liquidação" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="DESC_DL" nullable="true" remarks="Descrição do Documento de Liquidação. Domínio: DIÁRIAS, DUPLICATA, FATURA, FOLHA DE PAGAMENTO, NOTA FISCAL, NOTA FISCAL / FATURA, OBTV PARA EXECUTOR, OBTV PARA O CONVENENTE, etc" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="VL_PAGO" nullable="true" remarks="Valor do pagamento" size="2147483647" type="varchar"/>
+         <primaryKey column="NR_MOV_FIN" sequenceNumberInPK="1"/>
+         <index name="pagamento_pk" unique="true">
+            <column ascending="true" name="NR_MOV_FIN"/>
+         </index>
+      </table>
+      <table name="plano_aplicacao_detalhado" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="ID_PROPOSTA" nullable="true" remarks="Código Sequencial do Sistema para uma Proposta" size="2147483647" type="varchar">
+            <parent column="ID_PROPOSTA" foreignKey="proposta_fk" implied="false" onDeleteCascade="false" table="proposta"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="SIGLA" nullable="true" remarks="UF cadastrada referente a localidade do item. Domínio: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="MUNICIPIO" nullable="true" remarks="Município cadastrado referente a localidade do item" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="NATUREZA_AQUISICAO" nullable="true" remarks="Código de natureza de aquisição" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="DESCRICAO_ITEM" nullable="true" remarks="Descrição do Item" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="CEP_ITEM" nullable="true" remarks="CEP cadastrado referente a localidade do item" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="ENDERECO_ITEM" nullable="true" remarks="Endereço cadastrado referente a localidade do item" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="TIPO_DESPESA_ITEM" nullable="true" remarks="Tipo da Despesa. Domínio: SERVICO, BEM, OUTROS, TRIBUTO, OBRA e DESPESA_ADMINISTRATIVA" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="NATUREZA_DESPESA" nullable="true" remarks="Natureza da Despesa referente ao item" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="9" name="SIT_ITEM" nullable="true" remarks="Situação atual do Item. Domínio: APROVADO" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="10" name="QTD_ITEM" nullable="true" remarks="Quantidade de Itens" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="11" name="VALOR_UNITARIO_ITEM" nullable="true" remarks="Valor unitário do item" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="12" name="VALOR_TOTAL_ITEM" nullable="true" remarks="Valor total do item" size="2147483647" type="varchar"/>
+      </table>
+      <table name="programa" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="ID_PROGRAMA" nullable="false" remarks="Código Sequencial do Sistema para um Programa" size="2147483647" type="varchar">
+            <child column="ID_PROGRAMA" foreignKey="programa_fk" implied="false" onDeleteCascade="false" table="programa_proposta"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="COD_ORGAO_SUP_PROGRAMA" nullable="true" remarks="Código do Órgão executor do Programa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="DESC_ORGAO_SUP_PROGRAMA" nullable="true" remarks="Nome do Órgão executor do Programa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="COD_PROGRAMA" nullable="true" remarks="Chave que identifica o programa composta por: (Cód.Órgão+Ano+Cód.Sequencial do Sistema)" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="NOME_PROGRAMA" nullable="true" remarks="Descrição do Programa de Governo" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="SIT_PROGRAMA" nullable="true" remarks="Situação atual do Programa. Domínio: Cadastrado; Disponibilizado; Inativo" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="DATA_DISPONIBILIZACAO" nullable="true" remarks="Data de disponibilização do Programa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="ANO_DISPONIBILIZACAO" nullable="true" remarks="Ano de disponibilização do Programa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="DT_PROG_INI_RECEB_PROP" nullable="true" remarks="Data Início para o recebimento das propostas voluntárias para o Programa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="9" name="DT_PROG_FIM_RECEB_PROP" nullable="true" remarks="Data Fim para o recebimento das propostas voluntárias para o Programa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="10" name="DT_PROG_INI_EMENDA_PAR" nullable="true" remarks="Data Início para o recebimento das propostas de Emenda Parlamentar para o Programa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="11" name="DT_PROG_FIM_EMENDA_PAR" nullable="true" remarks="Data Fim para o recebimento das propostas de Emenda Parlamentar para o Programa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="12" name="DT_PROG_INI_BENEF_ESP" nullable="true" remarks="Data Início para o recebimento das propostas de beneficiário específico para o Programa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="13" name="DT_PROG_FIM_BENEF_ESP" nullable="true" remarks="Data Fim para o recebimento das propostas de beneficiário específico para o Programa" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="14" name="MODALIDADE_PROGRAMA" nullable="true" remarks="Modalidade do Programa. Domínio pode ser: CONTRATO DE REPASSE, CONVENIO, TERMO DE COLABORACAO, TERMO DE FOMENTO e TERMO DE PARCERIA" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="15" name="NATUREZA_JURIDICA_PROGRAMA" nullable="true" remarks="Natureza Jurídica Atendida pelo Programa. Domínio: Administração Pública Estadual ou do Distrito Federal, Administração Pública Municipal, &#13;&#10;&#13;&#10;Consórcio Público, Empresa pública/Sociedade de economia mista e Organização da Sociedade Civil" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="16" name="UF_PROGRAMA" nullable="true" remarks="Ufs Habilitadas para o Programa. Domínio: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO, &lt;null&gt;. Quando o valor é nulo, o programa atende a todo o Brasil" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="17" name="ACAO_ORCAMENTARIA" nullable="true" remarks="Número da Ação Orçamentária" size="2147483647" type="varchar"/>
+         <primaryKey column="ID_PROGRAMA" sequenceNumberInPK="1"/>
+         <index name="programa_pk" unique="true">
+            <column ascending="true" name="ID_PROGRAMA"/>
+         </index>
+      </table>
+      <table name="programa_proposta" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="ID_PROGRAMA" nullable="false" remarks="Código Sequencial do Sistema para um Programa" size="2147483647" type="varchar">
+            <parent column="ID_PROGRAMA" foreignKey="programa_fk" implied="false" onDeleteCascade="false" table="programa"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="ID_PROPOSTA" nullable="false" remarks="Código Sequencial do Sistema para uma Proposta" size="2147483647" type="varchar">
+            <parent column="ID_PROPOSTA" foreignKey="proposta_fk" implied="false" onDeleteCascade="false" table="proposta"/>
+         </column>
+      </table>
+      <table name="proponentes" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="IDENTIF_PROPONENTE" nullable="false" remarks="CNPJ do Proponente" size="2147483647" type="varchar">
+            <child column="IDENTIF_PROPONENTE" foreignKey="proponente_fk" implied="false" onDeleteCascade="false" table="proposta"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="NM_PROPONENTE" nullable="true" remarks="Nome da Entidade Proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="MUNICIPIO_PROPONENTE" nullable="true" remarks="Município do Proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="UF_PROPONENTE" nullable="true" remarks="UF do Proponente. Domínio: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="ENDERECO_PROPONENTE" nullable="true" remarks="Endereço do Proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="BAIRRO_PROPONENTE" nullable="true" remarks="Bairro do Proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="CEP_PROPONENTE" nullable="true" remarks="CEP do Proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="EMAIL_PROPONENTE" nullable="true" remarks="E-mail do Proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="TELEFONE_PROPONENTE" nullable="true" remarks="Telefone do Proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="9" name="FAX_PROPONENTE" nullable="true" remarks="Fax do Proponente" size="2147483647" type="varchar"/>
+         <primaryKey column="IDENTIF_PROPONENTE" sequenceNumberInPK="1"/>
+         <index name="proponentes_pk" unique="true">
+            <column ascending="true" name="IDENTIF_PROPONENTE"/>
+         </index>
+      </table>
+      <table name="proposta" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="ID_PROPOSTA" nullable="false" remarks="Código Sequencial do Sistema para uma Proposta" size="2147483647" type="varchar">
+            <child column="ID_PROPOSTA" foreignKey="proposta_fk" implied="false" onDeleteCascade="false" table="consorcios"/>
+            <child column="ID_PROPOSTA" foreignKey="proposta_fk" implied="false" onDeleteCascade="false" table="convenio"/>
+            <child column="ID_PROPOSTA" foreignKey="proposta_fk" implied="false" onDeleteCascade="false" table="emenda"/>
+            <child column="ID_PROPOSTA" foreignKey="proposta_fk" implied="false" onDeleteCascade="false" table="historico_situacao"/>
+            <child column="ID_PROPOSTA" foreignKey="proposta_fk" implied="false" onDeleteCascade="false" table="plano_aplicacao_detalhado"/>
+            <child column="ID_PROPOSTA" foreignKey="proposta_fk" implied="false" onDeleteCascade="false" table="programa_proposta"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="UF_PROPONENTE" nullable="true" remarks="UF do Proponente. Domínio: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="MUNIC_PROPONENTE" nullable="true" remarks="Município do Proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="COD_MUNIC_IBGE" nullable="true" remarks="Código IBGE do Município" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="COD_ORGAO_SUP" nullable="true" remarks="Código do Órgão Superior do Concedente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="DESC_ORGAO_SUP" nullable="true" remarks="Nome do Órgão Superior do Concedente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="NATUREZA_JURIDICA" nullable="true" remarks="Natureza Jurídica do Proponente. Domínio: Administração Pública Estadual ou do Distrito Federal, Administração Pública Municipal, Consórcio Público, Empresa pública/Sociedade de economia mista e Organização da Sociedade Civil" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="NR_PROPOSTA" nullable="true" remarks="Número da Proposta gerado pelo Siconv" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="DIA_PROP" nullable="true" remarks="Dia do cadastro da Proposta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="9" name="MES_PROP" nullable="true" remarks="Mês do cadastro da Proposta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="10" name="ANO_PROP" nullable="true" remarks="Ano do cadastro da Proposta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="11" name="DIA_PROPOSTA" nullable="true" remarks="Data do cadastro da Proposta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="12" name="COD_ORGAO" nullable="true" remarks="Código do Órgão ou Entidade Concedente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="13" name="DESC_ORGAO" nullable="true" remarks="Nome do Órgão ou Entidade Concedente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="14" name="MODALIDADE" nullable="true" remarks="Modalidade da Proposta. Domínio pode ser: CONTRATO DE REPASSE, CONVENIO, TERMO DE COLABORACAO, TERMO DE FOMENTO e TERMO DE PARCERIA" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="15" name="IDENTIF_PROPONENTE" nullable="true" remarks="CNPJ do Proponente" size="2147483647" type="varchar">
+            <parent column="IDENTIF_PROPONENTE" foreignKey="proponente_fk" implied="false" onDeleteCascade="false" table="proponentes"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="16" name="NM_PROPONENTE" nullable="true" remarks="Nome da Entidade Proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="17" name="CEP_PROPONENTE" nullable="true" remarks="CEP do Proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="18" name="ENDERECO_PROPONENTE" nullable="true" remarks="Endereço do Proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="19" name="BAIRRO_PROPONENTE" nullable="true" remarks="Bairro do Proponente" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="20" name="NM_BANCO" nullable="true" remarks="Nome do Banco para depósito do recurso da Transferência Voluntária" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="21" name="SITUACAO_CONTA" nullable="true" remarks="Situação atual da conta bancária do instrumento. Domínio: Aguardando Retorno do Banco, Enviada, Cadastrada, Registrada, Erro na Abertura de Conta, Regularizada, A Verificar, Aguardando Envio e Pendente de Regularização" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="22" name="SITUACAO_PROJETO_BASICO" nullable="true" remarks="Situação atual do Projeto Básico/Termo de Referência. Domínio: Aguardando Projeto Básico, Não Cadastrado, Projeto Básico Aprovado, Projeto Básico em Análise, Projeto Básico em Complementação, Projeto Básico Rejeitado" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="23" name="SIT_PROPOSTA" nullable="true" remarks="Situação atual da Proposta. Domínio pode ser: Proposta/Plano de Trabalho Cadastrados, Proposta/Plano de Trabalho em Análise, Proposta/Plano de Trabalho Rejeitados, Proposta/Plano de Trabalho Aprovados, etc" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="24" name="DIA_INIC_VIGENCIA_PROPOSTA" nullable="true" remarks="Data Início da Vigência da Proposta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="25" name="DIA_FIM_VIGENCIA_PROPOSTA" nullable="true" remarks="Data Fim da Vigência da Proposta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="26" name="OBJETO_PROPOSTA" nullable="true" remarks="Descrição do Objeto da Proposta" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="27" name="VL_GLOBAL_PROP" nullable="true" remarks="Valor Global da proposta cadastrada (Valor de Repasse Proposta + Valor Contrapartida Proposta)" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="28" name="VL_REPASSE_PROP" nullable="true" remarks="Valor de Repasse do Governo Federal referente a proposta cadastrada" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="29" name="VL_CONTRAPARTIDA_PROP" nullable="true" remarks="Valor da Contrapartida apresentada na proposta pelo convenente" size="2147483647" type="varchar"/>
+         <primaryKey column="ID_PROPOSTA" sequenceNumberInPK="1"/>
+         <index name="proposta_pk" unique="true">
+            <column ascending="true" name="ID_PROPOSTA"/>
+         </index>
+      </table>
+      <table name="prorroga_oficio" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="NR_CONVENIO" nullable="true" remarks="Número gerado pelo Siconv. Possui faixa de numeração reservada que vai de 700000 a 999999" size="2147483647" type="varchar">
+            <parent column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="convenio"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="NR_PRORROGA" nullable="true" remarks="Número do Prorroga de Ofício" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="DT_INICIO_PRORROGA" nullable="true" remarks="Data Início de Vigência do Prorroga de Ofício" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="DT_FIM_PRORROGA" nullable="true" remarks="Data Fim de Vigência do Prorroga de Ofício" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="DIAS_PRORROGA" nullable="true" remarks="Dias de prorrogação" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="DT_ASSINATURA_PRORROGA" nullable="true" remarks="Data de assinatura do Prorroga de Ofício" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="SIT_PRORROGA" nullable="true" remarks="Situação atual do Prorroga de Ofício. Domínio: DISPONIBILIZADA, PUBLICADA" size="2147483647" type="varchar"/>
+      </table>
+      <table name="termo_aditivo" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="NR_CONVENIO" nullable="true" remarks="Número gerado pelo Siconv. Possui faixa de numeração reservada que vai de 700000 a 999999" size="2147483647" type="varchar">
+            <parent column="NR_CONVENIO" foreignKey="convenio_fk" implied="false" onDeleteCascade="false" table="convenio"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="NUMERO_TA" nullable="true" remarks="Número do Termo Aditivo" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="TIPO_TA" nullable="true" remarks="Tipo do Termo Aditivo" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="VL_GLOBAL_TA" nullable="true" remarks="Valor Global referente ao TA" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="VL_REPASSE_TA" nullable="true" remarks="Valor de Repasse referente ao TA" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="VL_CONTRAPARTIDA_TA" nullable="true" remarks="Valor de Contrapartida referente ao TA" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="DT_ASSINATURA_TA" nullable="true" remarks="Data da assinatura do Termo Aditivo" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="7" name="DT_INICIO_TA" nullable="true" remarks="Data Início de Vigência do Termo Aditivo" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="DT_FIM_TA" nullable="true" remarks="Data Fim de Vigência do Termo Aditivo" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="9" name="JUSTIFICATIVA_TA" nullable="true" remarks="Justificativa para a realização do Termo Aditivo" size="2147483647" type="varchar"/>
+      </table>
+   </tables>
+</database>
